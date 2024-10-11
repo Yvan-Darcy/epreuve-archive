@@ -1,7 +1,7 @@
 .navbar {
     opacity: 0.5;
     border-bottom: 1px solid whitesmoke;
-    border-radius: 5px;
+    border-radius: 0px; //we don't want the navigation bar to be rounded I guess, My suggestion we can leave it as a square to map to the shape of the page
   }
   
   .navbar-brand {
