@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  private apiUrl = 'https://tharapi.pythonanywhere.com'; // Replace with your API URL
+  private apiUrl = 'http://127.0.0.1:8000/api'; // Replace with your API URL
 
   constructor(private http: HttpClient) {}
 
@@ -18,5 +18,26 @@ export class ApiService {
     return this.http.post<any>(`${this.apiUrl}/sections`, data);
   }
 
-  // Add more methods as needed
+  //dynamic api call
+  form(
+    router: string,
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE',
+    body?: any
+  ): Observable<any> {
+    //router is same as endpoint like /contact
+    const url = `${this.apiUrl}/${router}/`;
+
+    switch (method) {
+      case 'GET':
+        return this.http.get<any>(url);
+      case 'POST':
+        return this.http.post<any>(url, body);
+      case 'PUT':
+        return this.http.put<any>(url, body);
+      case 'DELETE':
+        return this.http.delete<any>(url);
+      default:
+        throw new Error(`Unsupported method: ${method}`);
+    }
+  }
 }

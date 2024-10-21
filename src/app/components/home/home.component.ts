@@ -3,8 +3,7 @@ import { NavbarComponent } from '../../reusable/navbar/navbar.component';
 import { FooterComponent } from '../../reusable/footer/footer.component';
 import { ApiService } from '../../services/api.services';
 import { CommonModule } from '@angular/common';
-import { response } from 'express';
-import { error } from 'console';
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -27,7 +26,7 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-  sendData(): void {
+  sendData(): void{
     const payload = {
       grade: '3',
       course: 'Burundi is the best country',

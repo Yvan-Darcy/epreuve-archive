@@ -36,25 +36,30 @@
     <div class="row">
         <div class="col-6">
             <div class="get-in-touch">
-                <form class="contact-form row forma pe-5">
-                   <div class="form-field col-lg-6 ">
-                      <input id="name" class="input-text js-input" type="text" placeholder="First name" required>
-                   </div>
-                    <div class="form-field col-lg-6 ">
-                      <input id="name" class="input-text js-input" type="text" placeholder="Last name" required>
-                   </div>
-                   <div class="form-field col-lg-12">
-                      <input id="email" class="input-text js-input" type="email" placeholder="Email" required>
-                   </div>
-                   <div class="form-field col-lg-12">
-                      <input id="message" class="input-text js-input" type="text" placeholder="Message" required>
-                   </div>
-                   <div class="form-field col-lg-12">
-                      <input class="submit-btn" type="submit" value="Send">
-                   </div>
+            
+            <div *ngIf="success==true">Form submitted successfully!</div>
+            <div *ngIf="success==false">{{error}}</div>
+                <form class="contact-form row forma pe-5" 
+                (ngSubmit)="onSubmitEmail()">
+                <div *ngIf="isLoading==true">Loading...</div>
+                    <div class="form-field col-lg-6">
+                        <input id="first-name" class="input-text js-input" type="text" placeholder="Nom" [(ngModel)]="userDetails.first_name" name="first_name" required>
+                    </div>
+                    <div class="form-field col-lg-6">
+                        <input id="last-name" class="input-text js-input" type="text" placeholder="Prénom" [(ngModel)]="userDetails.last_name" name="last_name" required>
+                    </div>
+                    <div class="form-field col-lg-12">
+                        <input id="email" class="input-text js-input" type="email" placeholder="Email" [(ngModel)]="userDetails.email" name="email" required>
+                    </div>
+                    <div class="form-field col-lg-12">
+                        <input id="message" class="input-text js-input" type="text" placeholder="Message" [(ngModel)]="userDetails.message" name="message" required>
+                    </div>
+                    <div class="form-field col-lg-12">
+                        <input class="submit-btn" type="submit" value="Send">
+                    </div>
                 </form>
             </div>
-        </div> 
+        </div>
 
         <div class="col-6">
             <div class="mt-5 ms-5">
